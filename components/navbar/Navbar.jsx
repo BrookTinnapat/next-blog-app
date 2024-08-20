@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import AuthLinks from "../authLinks/AuthLinks";
+import ThemeToggle from "../themeToggle/ThemeToggle";
 
 const Navbar = () => {
   return (
@@ -14,6 +15,7 @@ const Navbar = () => {
       </div>
       <div className="flex flex-1 items-center font-bold">NEXT Blog</div>
       <div className="flex items-center gap-[20px] font-xl">
+        <ThemeToggle />
         <Link href="/">Homepage</Link>
         <Link href="/">Contact</Link>
         <Link href="/">About</Link>
