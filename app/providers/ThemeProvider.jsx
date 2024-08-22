@@ -4,13 +4,15 @@ import { ThemeContext } from "@/app/context/ThemeContext";
 
 const ThemeProvider = ({ children }) => {
   const { theme } = useContext(ThemeContext);
-  const [mounted, setMoumted] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMoumted(true), [];
+    setMounted(true), [];
   });
 
-  return <div className={theme}>{children}</div>;
+  if (mounted) {
+    return <div className={theme}>{children}</div>;
+  }
 };
 
 export default ThemeProvider;
