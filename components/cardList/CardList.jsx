@@ -1,7 +1,14 @@
 import React from "react";
+import Card from "../card/Card";
 
 const CardList = () => {
-  return <div>CardList</div>;
+  return (
+    <>
+      <Card />
+      <Card />
+      <Card />
+    </>
+  );
 };
 
 export default CardList;

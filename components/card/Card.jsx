@@ -4,24 +4,25 @@ import Link from "next/link";
 
 const Card = () => {
   return (
-    <div className="mb-[50px] flex items-center gap-[50px]">
-      <div className="flex-1 h-[350px] relative">
-        <Image src="/p1.jpeg" alt="" fill className="image" />
+    <div className="my-[50px] flex items-center gap-[50px]">
+      <div className="flex-1 h-[350px] relative ">
+        <Image src="/p1.jpeg" alt="" fill className="object-cover" />
       </div>
       <div className="flex-1 flex flex-col gap-[30px]">
         <div className="detial">
-          <span className="text-gray-400"></span>
-          <span className="text-red-500 font-bold"></span>
+          <span className="text-gray-400">11/11/2000 </span>
+          <span className="text-red-700 font-semibold">Tag</span>
+          <h1 className="text-3xl font-bold mt-3">Title Blog</h1>
         </div>
         <Link href="/">
-          <h1 className="">
+          <span className="">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
             officiis totam sed repellat iure ut necessitatibus veniam nisi,
             ducimus libero mollitia modi impedit qui error facere eius quae
             nobis dolores?
-          </h1>
-          <Link href="/">Read More</Link>
+          </span>
         </Link>
+        <Link href="/">Read More</Link>
       </div>
     </div>
   );
