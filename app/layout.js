@@ -2,9 +2,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-import { ThemeContextProvider } from "./context/ThemeContext";
-import ThemeProvider from "./providers/ThemeProvider";
+import { ThemeProvider } from "next-themes";
 
+// Import the Inter font from Google Fonts
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -12,21 +12,25 @@ export const metadata = {
   description: "NextJS blog app",
 };
 
+// RootLayout component wraps the entire application
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThemeContextProvider>
-          <ThemeProvider>
-            <div className="container">
-              <div className="wrapper">
-                <Navbar />
-                {children}
-                <Footer />
-              </div>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="container">
+            <div className="wrapper">
+              <Navbar />
+              {children}
+              <Footer />
             </div>
-          </ThemeProvider>
-        </ThemeContextProvider>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
