@@ -1,7 +1,11 @@
-import React from "react";
+// import Image from "next/image";
+// import Link from "next/link";
+// import React from "react";
 
-const CardList = () => {
-  return <div>CardList</div>;
-};
+// const CardList = () => {
+//   return (
 
-export default CardList;
+//   )
+// };
+
+// export default CardList;
