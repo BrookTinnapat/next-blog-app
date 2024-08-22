@@ -4,9 +4,12 @@ import Card from "../card/Card";
 const CardList = () => {
   return (
     <>
-      <Card />
-      <Card />
-      <Card />
+      <div className="flex-[5]">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
     </>
   );
 };

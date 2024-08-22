@@ -4,9 +4,14 @@ import Link from "next/link";
 
 const Card = () => {
   return (
-    <div className="my-[50px] flex items-center gap-[50px]">
-      <div className="flex-1 h-[350px] relative ">
-        <Image src="/p1.jpeg" alt="" fill className="object-cover" />
+    <div className="my-[50px] flex items-center gap-[50px] max-w-[968px]">
+      <div className="flex-1 h-[350px] relative">
+        <Image
+          src="/p1.jpeg"
+          alt="image"
+          fill
+          className="object-cover rounded-md"
+        />
       </div>
       <div className="flex-1 flex flex-col gap-[30px]">
         <div className="detial">
