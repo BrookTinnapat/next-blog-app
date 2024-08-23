@@ -27,7 +27,12 @@ const Card = () => {
             nobis dolores?
           </span>
         </Link>
-        <Link href="/">Read More</Link>
+        <Link
+          href="/"
+          className="underline underline-offset-2 w-[90px] flex justify-center text-red-700"
+        >
+          Read More
+        </Link>
       </div>
     </div>
   );
