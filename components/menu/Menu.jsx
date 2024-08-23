@@ -8,7 +8,7 @@ const Menu = () => {
   return (
     <div className="flex-[2] mt-[60px]">
       <h2 className="text-gray-500 text-[16px] font-[400]">{"What's hot"}</h2>
-      <h1 className="text-[28px]">Most Popular</h1>
+      <h1 className="text-[28px] font-bold">Most Popular</h1>
       <MenuPosts withImage={false} />
       <h2 className="text-gray-500 text-[16px] font-[400]">
         Discover by topic
