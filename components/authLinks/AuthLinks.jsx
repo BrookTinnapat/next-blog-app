@@ -32,7 +32,7 @@ const AuthLinks = () => {
       )}
       <div></div>
       <DropdownMenu>
-        <DropdownMenuTrigger>
+        <DropdownMenuTrigger className="">
           <Bars3Icon className="w-6 h-6 cursor-pointer md:hidden" />
           {/* Using the bars-3 icon */}
         </DropdownMenuTrigger>

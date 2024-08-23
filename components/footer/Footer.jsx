@@ -8,20 +8,20 @@ const Footer = () => {
       <div className="flex-1 flex flex-col gap-[14px]">
         <div className="flex items-center gap-[10px]">
           {/* <Image src="/logo.png" alt="lama blog" width={50} height={50} /> */}
-          <h1 className="text-xl">Next Blog</h1>
+          <h1 className="text-xl hidden md:block">Next Blog</h1>
         </div>
-        <p className="font-[300] w-max-[500px]">
+        <p className="font-[300] w-max-[500px] hidden md:block">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim
           necessitatibus similique aspernatur obcaecati veritatis. Aperiam cum
           porro sequi, totam minima consequuntur, aspernatur deleniti vero
           repellendus dorales.
         </p>
-        <div className="mt-[10px] flex gap-[10px]">
+        {/* <div className="mt-[10px] flex gap-[10px] ">
           <Image src="/facebook.png" alt="" width={18} height={18} />
           <Image src="/instagram.png" alt="" width={18} height={18} />
           <Image src="/tiktok.png" alt="" width={18} height={18} />
           <Image src="/youtube.png" alt="" width={18} height={18} />
-        </div>
+        </div> */}
       </div>
       <div className="flex justify-end gap-[100px]">
         <div className="flex-1 flex flex-col gap-[10px] font-[300]">

@@ -30,15 +30,15 @@ const Navbar = () => {
         <Image src="/tiktok.png" alt="tiktok" width={24} height={24} />
         <Image src="/youtube.png" alt="youtube" width={24} height={24} />
       </div>
-      <div className="flex flex-1 items-center text-black dark:text-white">
-        NEXT Blog
+      <div className="flex flex-1 items-center font-bold text-2xl text-black dark:text-white">
+        <Link href="/"> NEXT Blog</Link>
       </div>
       <div className="flex items-center gap-4">
         <Button
-          variant="outline"
+          variant="outline none"
           size="icon"
           onClick={handleThemeToggle}
-          className="p-2"
+          className="p-1"
         >
           {theme === "light" ? (
             <Moon className="h-[1rem] w-[1rem]" />
