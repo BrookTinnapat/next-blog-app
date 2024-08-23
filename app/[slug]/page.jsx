@@ -7,12 +7,12 @@ const SinglePage = () => {
   return (
     <div className="">
       <div className="gap-[50px]">
-        <div className="flex-[2]">
+        <div className="">
           <h1 className="text-[32px] lg:text-[64px] mt-[50px] font-bold">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
             iste eligendi.
           </h1>
-          <div className="mt-5 flex justify-center items-center ">
+          <div className="mt-5 rounded-md justify-center items-center hidden md:flex">
             <Image
               src="/p2.jpeg"
               alt="image"

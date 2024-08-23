@@ -18,43 +18,69 @@ const AuthLinks = () => {
 
   return (
     <>
-      {status === "notauthenticated" ? (
+      {status === "authenticated" ? (
         <Link href="/login" className="cursor-pointer hidden md:flex">
           Login
         </Link>
       ) : (
         <>
-          <Link href="/write" className="cursor-pointer">
+          <Link href="/write" className="cursor-pointer hidden md:flex">
             Write
           </Link>
-          <span className="">Log out</span>
+          <span className="cursor-pointer hidden md:flex">Log out</span>
         </>
       )}
-      <div></div>
-      <DropdownMenu>
-        <DropdownMenuTrigger className="">
-          <Bars3Icon className="w-6 h-6 cursor-pointer md:hidden" />
-          {/* Using the bars-3 icon */}
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <Link href="/">Homepage</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/about">About</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/contact">Contact</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/write">Write</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/login">Log in</Link>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      {status === "authenticated" ? (
+        <DropdownMenu>
+          <DropdownMenuTrigger className="">
+            <Bars3Icon className="w-6 h-6 cursor-pointer md:hidden" />
+            {/* Using the bars-3 icon */}
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <Link href="/">Homepage</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/about">About</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/contact">Contact</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/write">Write</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/login">Log out</Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      ) : (
+        <DropdownMenu>
+          <DropdownMenuTrigger className="">
+            <Bars3Icon className="w-6 h-6 cursor-pointer md:hidden" />
+            {/* Using the bars-3 icon */}
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <Link href="/">Homepage</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/about">About</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/contact">Contact</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/write">Write</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/login">Log out</Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )}
     </>
   );
 };
