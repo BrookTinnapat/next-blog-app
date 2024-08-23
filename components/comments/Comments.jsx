@@ -6,7 +6,7 @@ const Comments = () => {
   const status = "authenticated";
   return (
     <div className="mt-[50px]">
-      <h1 className="mb-[30px]">Comments</h1>
+      <h1 className="mb-[30px] font-semibold">Comments</h1>
       {status === "authenticated" ? (
         <div className="flex items-center justify-between gap-[30px]">
           <textarea

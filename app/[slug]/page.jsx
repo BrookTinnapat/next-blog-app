@@ -14,11 +14,11 @@ const SinglePage = () => {
           </h1>
           <div className="mt-5 flex justify-center items-center ">
             <Image
-              src="/fashion.png"
+              src="/p2.jpeg"
               alt="image"
               width={800}
-              height={300}
-              className="max-w-[500px] max-h-[300px] object-cover"
+              height={500}
+              className="max-w-[1000px] max-h-[500px] object-cover"
             />
           </div>
           <div className="flex mt-5 items-center gap-[20px]">
