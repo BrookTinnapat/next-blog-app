@@ -5,7 +5,7 @@ import Link from "next/link";
 const Card = () => {
   return (
     <div className="my-[50px] flex items-center gap-[50px] max-w-[968px]">
-      <div className="flex-1 h-[350px] relative">
+      <div className="flex-1 h-[350px] relative hidden lg:flex">
         <Image
           src="/p1.jpeg"
           alt="image"
