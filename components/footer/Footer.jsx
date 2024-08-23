@@ -10,7 +10,7 @@ const Footer = () => {
           {/* <Image src="/logo.png" alt="lama blog" width={50} height={50} /> */}
           <h1 className="text-xl">Next Blog</h1>
         </div>
-        <p className="font-[300] w-max-[600px]">
+        <p className="font-[300] w-max-[500px]">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim
           necessitatibus similique aspernatur obcaecati veritatis. Aperiam cum
           porro sequi, totam minima consequuntur, aspernatur deleniti vero
