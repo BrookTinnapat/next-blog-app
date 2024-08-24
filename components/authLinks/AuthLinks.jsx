@@ -11,14 +11,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { signOut } from "next-auth/react";
 
 const AuthLinks = () => {
   const [open, setOpen] = useState(false);
-  const status = "notauthenticated";
+  const status = "authenticated";
 
   return (
     <>
-      {status === "authenticated" ? (
+      {status === "notauthenticated" ? (
         <Link href="/login" className="cursor-pointer hidden md:flex">
           Login
         </Link>
@@ -27,7 +28,9 @@ const AuthLinks = () => {
           <Link href="/write" className="cursor-pointer hidden md:flex">
             Write
           </Link>
-          <span className="cursor-pointer hidden md:flex">Log out</span>
+          <span className="cursor-pointer hidden md:flex" onClick={signOut}>
+            Log out
+          </span>
         </>
       )}
       {status === "authenticated" ? (
