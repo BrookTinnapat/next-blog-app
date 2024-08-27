@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+// import { useState } from "react";
 import React from "react";
 import { Bars3Icon } from "@heroicons/react/24/outline"; // Importing the bars-3 icon
 import {
@@ -11,15 +11,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 const AuthLinks = () => {
-  const [open, setOpen] = useState(false);
-  const status = "authenticated";
+  // const [open, setOpen] = useState(false);
+  const { status } = useSession();
 
   return (
     <>
-      {status === "notauthenticated" ? (
+      {status === "unauthenticated" ? (
         <Link href="/login" className="cursor-pointer hidden md:flex">
           Login
         </Link>
@@ -28,7 +28,10 @@ const AuthLinks = () => {
           <Link href="/write" className="cursor-pointer hidden md:flex">
             Write
           </Link>
-          <span className="cursor-pointer hidden md:flex" onClick={signOut}>
+          <span
+            className="cursor-pointer hidden md:flex ml-4"
+            onClick={signOut}
+          >
             Log out
           </span>
         </>
