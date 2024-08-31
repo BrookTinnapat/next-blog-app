@@ -10,10 +10,23 @@ import {
   VideoCameraIcon,
   MicrophoneIcon,
 } from "@heroicons/react/24/outline";
+import { useRouter } from "next/router";
 
 const WritePage = () => {
+  const { data, status } = useSession();
+
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
+
+  const router = useRouter();
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  if (status === "authenticated") {
+    return router.push("/");
+  }
 
   return (
     <div className="flex flex-col p-4 bg-white h-[750px] md:h-[650px] shadow-md rounded-lg max-w-4xl mx-auto mt-10 relative">

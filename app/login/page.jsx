@@ -8,14 +8,14 @@ const LoginPage = () => {
   const { data, status } = useSession();
   console.log(data, status);
 
-  // const router = useRouter();
-  // if (status === "loading") {
-  //   return <div>Loading...</div>;
-  // }
+  const router = useRouter();
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
 
-  // if (status === "authenticated") {
-  //   return router.push("/");
-  // }
+  if (status === "authenticated") {
+    return router.push("/");
+  }
 
   return (
     <div className="flex items-center justify-center mt-4">
