@@ -1,42 +1,40 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Pagination from "../pagination/Pagination";
+import Image from "next/image";
 import Card from "../card/Card";
-import { PaginationComponent } from "../pagination/Pagination";
 
-const CardList = () => {
-  const [posts, setPosts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
-
-  const fetchPosts = async (page) => {
-    try {
-      const response = await fetch(
-        `http://localhost:3000/api/posts?page=${page}`
-      );
-      const data = await response.json();
-      console.log("API response data:", data);
-      setPosts(data.posts || []);
-      setCurrentPage(data.pagination?.currentPage || 1);
-      setTotalPages(data.pagination?.totalPages || 0);
-    } catch (error) {
-      console.error("Error fetching posts:", error);
+const getData = async (page, cat) => {
+  const res = await fetch(
+    `http://localhost:3000/api/posts?page=${page}&cat=${cat || ""}`,
+    {
+      cache: "no-store",
     }
-  };
-  useEffect(() => {
-    fetchPosts(currentPage);
-  }, [currentPage]);
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+
+  return res.json();
+};
+
+const CardList = async ({ page, cat }) => {
+  const { posts, count } = await getData(page, cat);
+
+  const POST_PER_PAGE = 2;
+
+  const hasPrev = POST_PER_PAGE * (page - 1) > 0;
+  const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
 
   return (
-    <div className="flex-[5]">
-      {posts.map((item, index) => (
-        <Card item={item} key={index} />
-      ))}
-      <PaginationComponent
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={fetchPosts}
-      />
+    <div className="flex-5">
+      <h1 className="mt-[50px]">Recent Posts</h1>
+      <div>
+        {posts?.map((item) => (
+          <Card item={item} key={item._id} />
+        ))}
+      </div>
+      <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext} />
     </div>
   );
 };

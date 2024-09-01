@@ -1,64 +1,30 @@
 "use client";
 
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-} from "@/components/ui/pagination";
-import { Button } from "@/components/ui/button";
+import React from "react";
+import { useRouter } from "next/navigation";
 
-const PaginationArrow = ({ direction, href, isDisabled }) => {
+const Pagination = ({ page, hasPrev, hasNext }) => {
   const router = useRouter();
-  const isLeft = direction === "left";
-  const disabledClassName = isDisabled ? "opacity-50 cursor-not-allowed" : "";
 
   return (
-    <Button
-      onClick={() => router.push(href)}
-      className={`bg-gray-100 text-gray-500 hover:bg-gray-200 ${disabledClassName}`}
-      aria-disabled={isDisabled}
-      disabled={isDisabled}
-    >
-      {isLeft ? "«" : "»"}
-    </Button>
+    <div className="flex justify-between">
+      <button
+        className="w-[100px] border-none p-4 bg-crimson  bg-red-700 cursor-pointer hover:bg-red-600 disabled:bg-red-300 disabled:cursor-not-allowed"
+        disabled={!hasPrev}
+        onClick={() => router.push(`?page=${page - 1}`)}
+      >
+        Previous
+      </button>
+      <div className="flex justify-center items-center">Page {page}</div>
+      <button
+        className="w-[100px] border-none p-4 bg-crimson bg-red-700 cursor-pointer hover:bg-red-600 disabled:bg-red-300 disabled:cursor-not-allowed"
+        disabled={!hasNext}
+        onClick={() => router.push(`?page=${page + 1}`)}
+      >
+        Next
+      </button>
+    </div>
   );
 };
 
-export function PaginationComponent({ pageCount }) {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const currentPage = Number(searchParams.get("page")) || 1;
-
-  const createPageURL = (pageNumber) => {
-    const params = new URLSearchParams(searchParams);
-    params.set("page", pageNumber.toString());
-    return `${pathname}?${params.toString()}`;
-  };
-
-  return (
-    <Pagination>
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationArrow
-            direction="left"
-            href={createPageURL(currentPage - 1)}
-            isDisabled={currentPage <= 1}
-          />
-        </PaginationItem>
-        <PaginationItem>
-          <span className="p-2 font-semibold text-gray-500">
-            Page {currentPage}
-          </span>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationArrow
-            direction="right"
-            href={createPageURL(currentPage + 1)}
-            isDisabled={currentPage >= pageCount}
-          />
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
-  );
-}
+export default Pagination;
