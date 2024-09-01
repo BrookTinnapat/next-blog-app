@@ -1,4 +1,5 @@
 "use client";
+
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import {
   Pagination,

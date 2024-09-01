@@ -1,54 +1,42 @@
 "use client";
-import React from "react";
+
+import React, { useState, useEffect } from "react";
 import Card from "../card/Card";
 import { PaginationComponent } from "../pagination/Pagination";
 
-const getData = async () => {
-  const res = await fetch(`http://localhost:3000/api/posts`, {
-    cache: "no-store",
-  });
+const CardList = () => {
+  const [posts, setPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-
-  return res.json();
-};
-
-const CardList = async () => {
-  const data = await getData();
+  const fetchPosts = async (page) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/posts?page=${page}`
+      );
+      const data = await response.json();
+      console.log("API response data:", data);
+      setPosts(data.posts || []);
+      setCurrentPage(data.pagination?.currentPage || 1);
+      setTotalPages(data.pagination?.totalPages || 0);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  };
+  useEffect(() => {
+    fetchPosts(currentPage);
+  }, [currentPage]);
 
   return (
     <div className="flex-[5]">
-      {data?.map((item, index) => (
+      {posts.map((item, index) => (
         <Card item={item} key={index} />
       ))}
-      {/* <Card />
-        <Card />
-        <Card />
-        <Card /> */}
-      {/* <div className="flex justify-between">
-        <Pagination>
-          <Link href="/login">
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious className="bg-red-700 w-40 text-white dark:text-white" />
-              </PaginationItem>
-            </PaginationContent>
-          </Link>
-        </Pagination>
-
-        <Pagination>
-          <Link href="#">
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationNext className="bg-red-700 w-40 text-white dark:text-white" />
-              </PaginationItem>
-            </PaginationContent>
-          </Link>
-        </Pagination>
-      </div> */}
-      <PaginationComponent pageCount={10} />
+      <PaginationComponent
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={fetchPosts}
+      />
     </div>
   );
 };
