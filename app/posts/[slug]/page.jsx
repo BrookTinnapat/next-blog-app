@@ -3,7 +3,21 @@ import Menu from "@/components/menu/Menu";
 import Image from "next/image";
 import React from "react";
 
-const SinglePage = () => {
+const getData = async (slug) => {
+  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+
+  return res.json();
+};
+
+const SinglePage = async ({ params }) => {
+  const { slug } = params;
+
   return (
     <div className="">
       <div className="gap-[50px]">

@@ -18,9 +18,13 @@ const Card = ({ key, item }) => {
       </div>
       <div className="flex-1 flex flex-col gap-[30px]">
         <div className="detial">
-          <span className="text-gray-400">11/11/2000 </span>
-          <span className="text-red-700 font-semibold">Tag</span>
-          <h1 className="text-3xl font-bold mt-3">{item.title}</h1>
+          <span className="text-gray-400">
+            {item.createdAt.substring(0, 10)} -{" "}
+          </span>
+          <span className="text-red-700 font-semibold">{item.catSlug}</span>
+          <Link href={`/posts/${item.slug}`}>
+            <h1>{item.title}</h1>
+          </Link>
         </div>
         <Link href="/">
           <span className="">
@@ -31,7 +35,7 @@ const Card = ({ key, item }) => {
           </span>
         </Link>
         <Link
-          href="/"
+          href={`/posts/${item.slug}`}
           className="underline underline-offset-2 w-[90px] flex justify-center text-red-700"
         >
           Read More
