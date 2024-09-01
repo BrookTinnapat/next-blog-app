@@ -1,14 +1,7 @@
+"use client";
 import React from "react";
 import Card from "../card/Card";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import { PaginationComponent } from "../pagination/Pagination";
 
 const getData = async () => {
   const res = await fetch(`http://localhost:3000/api/posts`, {
@@ -25,37 +18,37 @@ const getData = async () => {
 const CardList = async () => {
   const data = await getData();
 
-  // const POST_PER_PAGE = 2;
-
-  // const hasPrev = POST_PER_PAGE * (page - 1) > 0;
-  // const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
-
   return (
     <div className="flex-[5]">
-      {data?.map((item) => (
-        <Card item={item} key={item.id} />
+      {data?.map((item, index) => (
+        <Card item={item} key={index} />
       ))}
       {/* <Card />
         <Card />
         <Card />
         <Card /> */}
-      <Pagination>
-        <PaginationContent className="flex justify-between">
-          <PaginationItem>
-            <PaginationPrevious
-              href="#"
-              className="bg-red-700 w-40 text-white dark:text-white"
-            />
-          </PaginationItem>
+      {/* <div className="flex justify-between">
+        <Pagination>
+          <Link href="/login">
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious className="bg-red-700 w-40 text-white dark:text-white" />
+              </PaginationItem>
+            </PaginationContent>
+          </Link>
+        </Pagination>
 
-          <PaginationItem>
-            <PaginationNext
-              href="#"
-              className="bg-red-700 w-40 text-white dark:text-white"
-            />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+        <Pagination>
+          <Link href="#">
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationNext className="bg-red-700 w-40 text-white dark:text-white" />
+              </PaginationItem>
+            </PaginationContent>
+          </Link>
+        </Pagination>
+      </div> */}
+      <PaginationComponent pageCount={10} />
     </div>
   );
 };
