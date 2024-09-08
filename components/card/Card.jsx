@@ -23,20 +23,15 @@ const Card = ({ key, item }) => {
           </span>
           <span className="text-red-700 font-semibold">{item.catSlug}</span>
           <Link href={`/posts/${item.slug}`}>
-            <h1>{item.title}</h1>
+            <h1 className="text-2xl font-bold hover:underline">{item.title}</h1>
           </Link>
         </div>
         <Link href="/">
-          <span className="">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
-            officiis totam sed repellat iure ut necessitatibus veniam nisi,
-            ducimus libero mollitia modi impedit qui error facere eius quae
-            nobis dolores?
-          </span>
+          <span className="">{item.desc.substring(0, 400)}...</span>
         </Link>
         <Link
           href={`/posts/${item.slug}`}
-          className="underline underline-offset-2 w-[90px] flex justify-center text-red-700"
+          className="hover:underline w-[90px] flex justify-center text-red-700"
         >
           Read More
         </Link>

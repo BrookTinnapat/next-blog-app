@@ -1,7 +1,6 @@
 import GoogleProvider from "next-auth/providers/google";
-// import NextAuth from "next-auth";
-// import { getServerSession } from "next-auth/next";
 import { PrismaAdapter } from "@auth/prisma-adapter";
+import { getServerSession } from "next-auth";
 import prisma from "./connect";
 
 // Configuration for NextAuth
@@ -14,3 +13,5 @@ export const authOptions = {
     }),
   ],
 };
+
+export const getAuthSession = () => getServerSession(authOptions);
