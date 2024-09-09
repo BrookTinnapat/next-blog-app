@@ -20,13 +20,13 @@ const Card = ({ item, key }) => {
 
             <h1 className="text-2xl font-bold hover:underline">{item.title}</h1>
           </div>
-          <Link href={`/posts/${item.slug}`}>
-            <span
-              dangerouslySetInnerHTML={{
-                __html: item?.desc.substring(0, 400) + "...",
-              }}
-            ></span>
-          </Link>
+          {/* <Link href={`/posts/${item.slug}`}> */}
+          <span
+            dangerouslySetInnerHTML={{
+              __html: item?.desc.substring(0, 400) + "...",
+            }}
+          ></span>
+          {/* </Link> */}
           <Link
             href={`/posts/${item.slug}`}
             className="hover:underline w-[90px] flex justify-center text-red-700"
