@@ -3,7 +3,7 @@
 import * as React from "react";
 import { ThemeProvider } from "next-themes";
 
-function MyApp({ Component, pageProps }) {
+function ThemeProvider({ Component, pageProps }) {
   return (
     <ThemeProvider attribute="class">
       <Component {...pageProps} />
@@ -11,4 +11,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default ThemeProvider;
