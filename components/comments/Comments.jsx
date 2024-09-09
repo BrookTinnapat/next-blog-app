@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -85,15 +84,13 @@ const Comments = ({ postSlug }) => {
         data?.map((item) => (
           <div className="mt-[50px]">
             <div className="mt-[50px]">
-              <div className="flex items-center gap-[20px] mb-[20px]">
-                <Image
-                  src={item?.img}
-                  alt="comment user"
-                  width={50}
-                  height={50}
-                  className="rounded-sm"
+              <div className="flex items-center gap-[20px] mb-[20px] rounded-full h-auto w-[400px]">
+                <img
+                  src={item?.user?.image}
+                  alt="user"
+                  className="object-cover rounded-full max-w-10"
                 />
-                <div className="flex flex-col gap-[5px]">
+                <div className="flex flex-col">
                   <span className="font-[500]">{item?.user.name}</span>
                   <span className="text-[14px]">{item?.desc}</span>
                 </div>

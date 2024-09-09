@@ -28,11 +28,9 @@ const SinglePage = async ({ params }) => {
             {data?.title}
           </h1>
           <div className="mt-5 rounded-md justify-center items-center hidden md:flex">
-            <Image
-              src="/p2.jpeg"
+            <img
+              src={data?.img}
               alt="image"
-              width={800}
-              height={500}
               className="max-w-[1000px] max-h-[500px] object-cover"
             />
           </div>
@@ -51,7 +49,10 @@ const SinglePage = async ({ params }) => {
         </div>
         <div className="flex gap-[50px]">
           <div className="flex-[5] mt-[60px]">
-            <div className="text-[20px] font-[300] mb-[20px]">{data?.desc}</div>
+            <div
+              className="text-[20px] font-[300] mb-[20px]"
+              dangerouslySetInnerHTML={{ __html: data?.desc }}
+            ></div>
             <Comments postSlug={slug} />
           </div>
           <Menu />

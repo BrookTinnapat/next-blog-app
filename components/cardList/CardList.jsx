@@ -2,6 +2,7 @@ import React from "react";
 import Pagination from "../pagination/Pagination";
 import Image from "next/image";
 import Card from "../card/Card";
+import Link from "next/link";
 
 const getData = async (page, cat) => {
   const res = await fetch(
@@ -21,7 +22,7 @@ const getData = async (page, cat) => {
 const CardList = async ({ page, cat }) => {
   const { posts, count } = await getData(page, cat);
 
-  const POST_PER_PAGE = 2;
+  const POST_PER_PAGE = 4;
 
   const hasPrev = POST_PER_PAGE * (page - 1) > 0;
   const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
@@ -31,7 +32,7 @@ const CardList = async ({ page, cat }) => {
       <h1 className="mt-[50px]">Recent Posts</h1>
       <div>
         {posts?.map((item) => (
-          <Card item={item} key={item._id} />
+          <Card item={item} key={item.id} />
         ))}
       </div>
       <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext} />

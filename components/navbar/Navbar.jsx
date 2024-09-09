@@ -23,7 +23,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center border-2 border-red-500 p-4">
+    <nav className="flex justify-between items-center p-4">
       <div className="lg:gap-10 flex-1 md:flex sm:gap-2 hidden">
         <Image src="/facebook.png" alt="facebook" width={24} height={24} />
         <Image src="/instagram.png" alt="instagram" width={24} height={24} />
